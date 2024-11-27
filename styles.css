@@ -101,6 +101,10 @@ select {
   font: inherit;
 }
 
+label {
+  display: block;
+}
+
 p,
 h1,
 h2,
@@ -132,6 +136,7 @@ h6 {
 /* END OF CSS RESET */
 
 body {
+  color: #e8ecd7;
   font-family: "Exo", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -139,14 +144,14 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #0b132b;
-  color: #6fffe9;
+  background-color: #1f4529;
+  color: #e8ecd7;
   height: 80px;
 }
 
 .add {
   border: none;
-  fill: #6fffe9;
+  fill: #e8ecd7;
   width: 2rem;
   cursor: pointer;
 }
@@ -157,6 +162,44 @@ nav {
 }
 
 .books-container {
-  min-height: 100vh;
-  background-color: #1c2541;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: space-evenly;
+  align-content: start;
+  gap: 3rem;
+  padding: 3rem;
+  min-height: calc(100vh - 80px);
+  background-color: #eed3b1;
+}
+
+.books-container > div {
+  background-color: #47663b;
+  border: 2px solid #1f4529;
+  height: 250px;
+}
+
+dialog {
+  background-color: #1f4529;
+  color: #e8ecd7;
+  height: 400px;
+  width: 300px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  outline: none;
+}
+
+dialog .close {
+  fill: #e8ecd7;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 2rem;
+  cursor: pointer;
+}
+
+.blur {
+  filter: blur(2px);
 }
