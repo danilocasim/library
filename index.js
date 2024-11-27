@@ -2,25 +2,10 @@
 
 const dialog = document.querySelector("dialog");
 const btnCloseDialog = document.querySelector(".close");
-const addBtn = document.querySelector("#add-btn");
 const booksContainer = document.querySelector(".books-container");
 const addBook = document.querySelector(".add");
 
-const myLibrary = [
-  { title: "Meditation", author: "Marcus Aurelius", pages: 246, isRead: true },
-  {
-    title: "Letter from a Stoic",
-    author: "Lucius Seneca",
-    pages: 424,
-    isRead: true,
-  },
-  {
-    title: "The War Of Art",
-    author: "Steven Pressfield",
-    pages: 200,
-    isRead: false,
-  },
-];
+const myLibrary = [];
 
 function Book(title, author, pages, isRead) {
   (this.title = title),
@@ -71,7 +56,7 @@ function addBooksToLibrary() {
   const form = document.querySelector("form").reset();
 }
 
-addBook.addEventListener("click", () => {
+addBook.addEventListener("click", (e) => {
   dialog.showModal();
   document.querySelector(".container").classList.add("blur");
 });
@@ -81,9 +66,11 @@ btnCloseDialog.addEventListener("click", () => {
   document.querySelector(".container").classList.remove("blur");
 });
 
-addBtn.addEventListener("click", () => {
+dialog.addEventListener("submit", (e) => {
   addBooksToLibrary();
-  dialog.close();
+});
+
+dialog.addEventListener("close", () => {
   document.querySelector(".container").classList.remove("blur");
 });
 
