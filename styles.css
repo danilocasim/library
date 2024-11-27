@@ -130,3 +130,33 @@ h6 {
 }
 
 /* END OF CSS RESET */
+
+body {
+  font-family: "Exo", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #0b132b;
+  color: #6fffe9;
+  height: 80px;
+}
+
+.add {
+  border: none;
+  fill: #6fffe9;
+  width: 2rem;
+  cursor: pointer;
+}
+
+.add:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+.books-container {
+  min-height: 100vh;
+  background-color: #1c2541;
+}
