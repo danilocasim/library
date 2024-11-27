@@ -166,8 +166,8 @@ nav {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: space-evenly;
   align-content: start;
-  gap: 3rem;
-  padding: 3rem;
+  gap: 2rem;
+  padding: 2rem;
   min-height: calc(100vh - 80px);
   background-color: #eed3b1;
 }
