@@ -53,7 +53,7 @@ const fetchBooks = () => {
     author.textContent = `${book.author}`;
     pages.textContent = `Pages: ${book.pages}`;
     deleteBtn.textContent = "x";
-    readBtn.textContent = book.isRead ? "unread" : "read";
+    readBtn.textContent = book.isRead ? "Unread" : "Read";
 
     deleteBtn.addEventListener("click", () => {
       let myAttr = newBook.dataset.title;

@@ -189,6 +189,7 @@ nav {
 }
 
 .books-container > .book > .delete {
+  border-radius: 50%;
   font-size: 1.5rem;
   border: none;
   color: #1f4529;
@@ -265,7 +266,7 @@ input:focus {
 }
 
 form button {
-  border-radius: 50%;
+  border-radius: 5px;
   padding: 4px 8px;
   border: none;
   background-color: green;
