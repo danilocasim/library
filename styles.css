@@ -188,6 +188,10 @@ nav {
   height: 350px;
 }
 
+button {
+  cursor: pointer;
+}
+
 .books-container > .book > .delete {
   border-radius: 50%;
   font-size: 1.5rem;
