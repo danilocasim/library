@@ -37,7 +37,7 @@ const fetchBooks = () => {
 
     author.textContent = `${book.author}`;
     pages.textContent = `${book.pages}`;
-    isRead.textContent = `Read: ${book.isRead}`;
+    isRead.textContent = `${book.isRead}`;
     deleteBtn.textContent = "DELETE";
 
     deleteBtn.addEventListener("click", () => {
@@ -55,6 +55,8 @@ const fetchBooks = () => {
         }
       });
     });
+
+    isBookRead(newBook, book.isRead);
 
     newBook.appendChild(title);
     newBook.appendChild(author);
