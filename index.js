@@ -1,5 +1,6 @@
 "use strict";
 
+const form = document.querySelector("form");
 const dialog = document.querySelector("dialog");
 const closeDialog = document.querySelector(".close");
 const booksContainer = document.querySelector(".books-container");
@@ -25,8 +26,8 @@ const fetchBooks = () => {
     const title = document.createElement("h1");
     const author = document.createElement("h3");
     const pages = document.createElement("h4");
-    const isRead = document.createElement("p");
     const deleteBtn = document.createElement("button");
+    const readBtn = document.createElement("button");
 
     title.textContent = `${book.title}`;
 
@@ -37,8 +38,8 @@ const fetchBooks = () => {
 
     author.textContent = `${book.author}`;
     pages.textContent = `${book.pages}`;
-    isRead.textContent = `${book.isRead}`;
     deleteBtn.textContent = "x";
+    readBtn.textContent = book.isRead ? "unread" : "read";
 
     deleteBtn.addEventListener("click", () => {
       let myAttr = newBook.dataset.title;
@@ -50,27 +51,43 @@ const fetchBooks = () => {
         if (myAttr == bookDiv.dataset.title) {
           bookDiv.remove();
           let index = myLibrary.indexOf(book);
-          console.log(index);
           myLibrary.splice(index, 1);
         }
       });
     });
 
+    readBtn.addEventListener("click", () => {
+      if (book.isRead == true) {
+        book.isRead = false;
+        readBtn.textContent = "read";
+      } else {
+        book.isRead = true;
+        readBtn.textContent = "unread";
+      }
+      isBookRead(newBook, book.isRead);
+      console.log(book.isRead);
+    });
+
+    newBook.classList.add("book");
+    deleteBtn.classList.add("delete");
+    readBtn.classList.add("read-unread-btn");
     isBookRead(newBook, book.isRead);
 
     newBook.appendChild(title);
     newBook.appendChild(author);
     newBook.appendChild(pages);
-    newBook.appendChild(isRead);
     newBook.appendChild(deleteBtn);
+    newBook.appendChild(readBtn);
     booksContainer.appendChild(newBook);
   });
 };
 
 function isBookRead(book, isRead) {
   if (isRead == true) {
+    book.classList.remove("not-read");
     book.classList.add("read");
   } else {
+    book.classList.remove("read");
     book.classList.add("not-read");
   }
 }
@@ -86,7 +103,7 @@ function addBooksToLibrary() {
   myLibrary.push(book);
   fetchBooks();
 
-  const form = document.querySelector("form").reset();
+  form.reset();
 }
 
 addBook.addEventListener("click", (e) => {
