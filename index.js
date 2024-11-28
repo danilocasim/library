@@ -6,7 +6,21 @@ const closeDialog = document.querySelector(".close");
 const booksContainer = document.querySelector(".books-container");
 const addBook = document.querySelector(".add");
 
-const myLibrary = [];
+const myLibrary = [
+  { title: "Meditation", author: "Marcus Aurelius", pages: 143, isRead: true },
+  {
+    title: "Letter From A Stoic",
+    author: "Lucilius Seneca",
+    pages: 143,
+    isRead: false,
+  },
+  {
+    title: "Grit and Perseverance",
+    author: "Angela Duckworth",
+    pages: 143,
+    isRead: false,
+  },
+];
 
 function Book(title, author, pages, isRead) {
   (this.title = title),
@@ -60,18 +74,22 @@ const fetchBooks = () => {
       if (book.isRead == true) {
         book.isRead = false;
         readBtn.textContent = "read";
+        readBtn.style.background = "red";
       } else {
         book.isRead = true;
         readBtn.textContent = "unread";
+        readBtn.style.background = "green";
       }
       isBookRead(newBook, book.isRead);
       console.log(book.isRead);
     });
 
+    readStatus(readBtn, book.isRead);
+    isBookRead(newBook, book.isRead);
+
     newBook.classList.add("book");
     deleteBtn.classList.add("delete");
     readBtn.classList.add("read-unread-btn");
-    isBookRead(newBook, book.isRead);
 
     newBook.appendChild(title);
     newBook.appendChild(author);
@@ -89,6 +107,16 @@ function isBookRead(book, isRead) {
   } else {
     book.classList.remove("read");
     book.classList.add("not-read");
+  }
+}
+
+function readStatus(readBtn, isRead) {
+  if (isRead == true) {
+    readBtn.classList.remove("unread-btn");
+    readBtn.classList.add("read-btn");
+  } else {
+    readBtn.classList.remove("read-btn");
+    readBtn.classList.add("unread-btn");
   }
 }
 

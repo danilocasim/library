@@ -1,3 +1,8 @@
+:root {
+  --green: green;
+  --red: red;
+}
+
 @font-face {
   font-family: "Exo";
   src: url("fonts/exo-regular-webfont.woff2") format("woff2"),
@@ -174,16 +179,13 @@ nav {
 
 .books-container > .book {
   position: relative;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  place-items: center;
+  text-align: center;
   color: #1f4529;
-  gap: 1rem;
-  align-items: center;
-  flex-direction: column;
   background-color: #fff;
   border-radius: 10px;
   height: 350px;
-  text-align: center;
 }
 
 .books-container > .book > .delete {
@@ -196,6 +198,22 @@ nav {
   top: 5px;
   right: 5px;
   cursor: pointer;
+}
+
+.read-unread-btn {
+  width: 100px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+}
+
+.read-btn {
+  background-color: green;
+}
+
+.unread-btn {
+  background-color: red;
 }
 
 .read {
