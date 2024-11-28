@@ -51,7 +51,7 @@ const fetchBooks = () => {
       .toLowerCase()}`;
 
     author.textContent = `${book.author}`;
-    pages.textContent = `${book.pages}`;
+    pages.textContent = `Pages: ${book.pages}`;
     deleteBtn.textContent = "x";
     readBtn.textContent = book.isRead ? "unread" : "read";
 

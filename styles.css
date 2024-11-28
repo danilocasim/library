@@ -229,26 +229,51 @@ nav {
 }
 
 dialog {
-  background-color: #1f4529;
-  color: #e8ecd7;
+  background-color: #fff;
+  color: #1f4529;
+  border: 2px solid #1f4529;
   height: 400px;
   width: 300px;
   position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: none;
   outline: none;
 }
 
 dialog form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  height: 100%;
+  display: grid;
+  place-content: center;
+  place-items: center stretch;
+  gap: 1.5rem;
+  font-weight: 700;
+}
+
+form input[type="text"],
+input[type="tel"],
+input[type="number"] {
+  appearance: none;
+  border: 2px solid #1f4529;
+  outline: none;
+  border-radius: 5px;
+}
+
+form input:focus,
+input:focus {
+  border: 2px solid green;
+}
+
+form button {
+  border-radius: 5px;
+  padding: 4px 8px;
+  border: none;
+  background-color: green;
+  color: white;
 }
 
 dialog .close {
-  fill: #e8ecd7;
+  fill: #1f4529;
   position: absolute;
   top: 5px;
   right: 5px;
