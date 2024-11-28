@@ -265,7 +265,7 @@ input:focus {
 }
 
 form button {
-  border-radius: 5px;
+  border-radius: 50%;
   padding: 4px 8px;
   border: none;
   background-color: green;

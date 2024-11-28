@@ -10,7 +10,7 @@ const myLibrary = [
   { title: "Meditation", author: "Marcus Aurelius", pages: 143, isRead: true },
   {
     title: "Letter From A Stoic",
-    author: "Lucilius Seneca",
+    author: "Lucius Seneca",
     pages: 143,
     isRead: false,
   },
@@ -73,11 +73,11 @@ const fetchBooks = () => {
     readBtn.addEventListener("click", () => {
       if (book.isRead == true) {
         book.isRead = false;
-        readBtn.textContent = "read";
+        readBtn.textContent = "Read";
         readBtn.style.background = "red";
       } else {
         book.isRead = true;
-        readBtn.textContent = "unread";
+        readBtn.textContent = "Unread";
         readBtn.style.background = "green";
       }
       isBookRead(newBook, book.isRead);
