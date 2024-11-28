@@ -46,10 +46,11 @@ const fetchBooks = () => {
 
       const books = document.querySelectorAll(".books-container > div");
 
-      books.forEach((book1) => {
-        if (myAttr == book1.dataset.title) {
-          book1.remove();
+      books.forEach((bookDiv) => {
+        if (myAttr == bookDiv.dataset.title) {
+          bookDiv.remove();
           let index = myLibrary.indexOf(book);
+          console.log(index);
           myLibrary.splice(index, 1);
         }
       });
