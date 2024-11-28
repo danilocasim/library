@@ -1,7 +1,7 @@
 "use strict";
 
 const dialog = document.querySelector("dialog");
-const btnCloseDialog = document.querySelector(".close");
+const closeDialog = document.querySelector(".close");
 const booksContainer = document.querySelector(".books-container");
 const addBook = document.querySelector(".add");
 
@@ -26,27 +26,57 @@ const fetchBooks = () => {
     const author = document.createElement("h3");
     const pages = document.createElement("h4");
     const isRead = document.createElement("p");
+    const deleteBtn = document.createElement("button");
 
     title.textContent = `${book.title}`;
+
+    newBook.dataset.title = `${title.textContent
+      .split(" ")
+      .join("")
+      .toLowerCase()}`;
+
     author.textContent = `${book.author}`;
     pages.textContent = `${book.pages}`;
-    isRead.textContent = `${book.isRead}`;
+    isRead.textContent = `Read: ${book.isRead}`;
+    deleteBtn.textContent = "DELETE";
+
+    deleteBtn.addEventListener("click", () => {
+      let myAttr = newBook.dataset.title;
+      console.log(myAttr);
+
+      const books = document.querySelectorAll(".books-container > div");
+
+      books.forEach((book1) => {
+        if (myAttr == book1.dataset.title) {
+          book1.remove();
+          let index = myLibrary.indexOf(book);
+          myLibrary.splice(index, 1);
+        }
+      });
+    });
 
     newBook.appendChild(title);
     newBook.appendChild(author);
     newBook.appendChild(pages);
     newBook.appendChild(isRead);
+    newBook.appendChild(deleteBtn);
     booksContainer.appendChild(newBook);
   });
 };
+
+function isBookRead(book, isRead) {
+  if (isRead == true) {
+    book.classList.add("read");
+  } else {
+    book.classList.add("not-read");
+  }
+}
 
 function addBooksToLibrary() {
   const title = document.querySelector("#title").value;
   const author = document.querySelector("#author").value;
   const pages = document.querySelector("#pages").value;
-  const isRead = document.querySelector("#isRead").value;
-
-  console.log(isRead);
+  const isRead = document.querySelector("#isRead").checked;
 
   const book = new Book(title, author, pages, isRead);
 
@@ -61,16 +91,16 @@ addBook.addEventListener("click", (e) => {
   document.querySelector(".container").classList.add("blur");
 });
 
-btnCloseDialog.addEventListener("click", () => {
-  dialog.close();
-  document.querySelector(".container").classList.remove("blur");
-});
-
 dialog.addEventListener("submit", (e) => {
   addBooksToLibrary();
 });
 
 dialog.addEventListener("close", () => {
+  document.querySelector(".container").classList.remove("blur");
+});
+
+closeDialog.addEventListener("click", () => {
+  dialog.close();
   document.querySelector(".container").classList.remove("blur");
 });
 

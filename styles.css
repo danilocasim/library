@@ -163,8 +163,8 @@ nav {
 
 .books-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  justify-content: space-evenly;
+  grid-template-columns: repeat(auto-fit, 250px);
+  justify-content: center;
   align-content: start;
   gap: 2rem;
   padding: 2rem;
@@ -173,9 +173,37 @@ nav {
 }
 
 .books-container > div {
-  background-color: #47663b;
+  display: flex;
+  justify-content: center;
+  color: #1f4529;
+  gap: 1rem;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  height: 350px;
+  text-align: center;
+}
+
+.books-container button {
+  padding: 5px 15px;
+  background-color: red;
+  border: none;
+  color: #e8ecd7;
+  font-weight: 700;
+  border-radius: 24px;
+}
+
+.read {
   border: 2px solid #1f4529;
-  height: 250px;
+  border-right: 10px solid green;
+  border-bottom: 5px solid green;
+}
+
+.not-read {
+  border: 2px solid #1f4529;
+  border-right: 10px solid red;
+  border-bottom: 5px solid red;
 }
 
 dialog {
