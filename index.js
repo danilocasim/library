@@ -29,6 +29,26 @@ function Book(title, author, pages, isRead) {
     (this.isRead = isRead);
 }
 
+function isBookRead(book, isRead) {
+  if (isRead == true) {
+    book.classList.remove("not-read");
+    book.classList.add("read");
+  } else {
+    book.classList.remove("read");
+    book.classList.add("not-read");
+  }
+}
+
+function readStatus(readBtn, isRead) {
+  if (isRead == true) {
+    readBtn.classList.remove("unread-btn");
+    readBtn.classList.add("read-btn");
+  } else {
+    readBtn.classList.remove("read-btn");
+    readBtn.classList.add("unread-btn");
+  }
+}
+
 const fetchBooks = () => {
   const books = document.querySelectorAll(".books-container > div");
   books.forEach((book) => {
@@ -81,7 +101,6 @@ const fetchBooks = () => {
         readBtn.style.background = "green";
       }
       isBookRead(newBook, book.isRead);
-      console.log(book.isRead);
     });
 
     readStatus(readBtn, book.isRead);
@@ -100,27 +119,7 @@ const fetchBooks = () => {
   });
 };
 
-function isBookRead(book, isRead) {
-  if (isRead == true) {
-    book.classList.remove("not-read");
-    book.classList.add("read");
-  } else {
-    book.classList.remove("read");
-    book.classList.add("not-read");
-  }
-}
-
-function readStatus(readBtn, isRead) {
-  if (isRead == true) {
-    readBtn.classList.remove("unread-btn");
-    readBtn.classList.add("read-btn");
-  } else {
-    readBtn.classList.remove("read-btn");
-    readBtn.classList.add("unread-btn");
-  }
-}
-
-function addBooksToLibrary() {
+const addBooksToLibrary = () => {
   const title = document.querySelector("#title").value;
   const author = document.querySelector("#author").value;
   const pages = document.querySelector("#pages").value;
@@ -132,7 +131,7 @@ function addBooksToLibrary() {
   fetchBooks();
 
   form.reset();
-}
+};
 
 addBook.addEventListener("click", (e) => {
   dialog.showModal();

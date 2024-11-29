@@ -1,6 +1,24 @@
 :root {
+  --white: #fff;
+  --cream: #e8ecd7;
+  --dark-green: #1f4529;
   --green: green;
   --red: red;
+  --body-txt-clr: var(--dark-green);
+  --nav-bg-clr: var(--dark-green);
+  --nav-txt-clr: var(--cream);
+  --book-container-bg: var(--cream);
+  --book-bg: var(--white);
+  --book-border-clr: var(--dark-green);
+  --dialog-close-icon: var(--dark-green);
+  --dialog-bg: var(--white);
+  --dialog-border-clr: var(--dark-green);
+  --read-status-clr: var(--green);
+  --unread-status-clr: var(--red);
+  --form-txt-clr: var(--dark-green);
+  --form-input-clr: var(--dark-green);
+  --form-btn-clr: var(--white);
+  --btn-form-clr: var(--green);
 }
 
 @font-face {
@@ -141,7 +159,7 @@ h6 {
 /* END OF CSS RESET */
 
 body {
-  color: #e8ecd7;
+  color: var(--body-txt-clr);
   font-family: "Exo", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -149,14 +167,14 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #1f4529;
-  color: #e8ecd7;
+  background-color: var(--nav-bg-clr);
+  color: var(--nav-txt-clr);
   height: 80px;
 }
 
 .add {
   border: none;
-  fill: #e8ecd7;
+  fill: var(--nav-txt-clr);
   width: 2rem;
   cursor: pointer;
 }
@@ -174,7 +192,7 @@ nav {
   gap: 2rem;
   padding: 2rem;
   min-height: calc(100vh - 80px);
-  background-color: #eed3b1;
+  background-color: var(--book-container-bg);
 }
 
 .books-container > .book {
@@ -182,8 +200,7 @@ nav {
   display: grid;
   place-items: center;
   text-align: center;
-  color: #1f4529;
-  background-color: #fff;
+  background-color: var(--book-bg);
   border-radius: 10px;
   height: 350px;
 }
@@ -196,7 +213,6 @@ button {
   border-radius: 50%;
   font-size: 1.5rem;
   border: none;
-  color: #1f4529;
   font-weight: 700;
   border-radius: 24px;
   position: absolute;
@@ -209,34 +225,33 @@ button {
   width: 100px;
   padding: 5px 10px;
   border-radius: 5px;
-  color: #fff;
+  color: var(--book-bg);
   border: none;
 }
 
 .read-btn {
-  background-color: green;
+  background-color: var(--read-status-clr);
 }
 
 .unread-btn {
-  background-color: red;
+  background-color: var(--unread-status-clr);
 }
 
 .read {
-  border: 2px solid #1f4529;
-  border-right: 10px solid green;
-  border-bottom: 5px solid green;
+  border: 2px solid var(--book-border-clr);
+  border-right: 10px solid var(--read-status-clr);
+  border-bottom: 5px solid var(--read-status-clr);
 }
 
 .not-read {
-  border: 2px solid #1f4529;
-  border-right: 10px solid red;
-  border-bottom: 5px solid red;
+  border: 2px solid var(--book-border-clr);
+  border-right: 10px solid var(--unread-status-clr);
+  border-bottom: 5px solid var(--unread-status-clr);
 }
 
 dialog {
-  background-color: #fff;
-  color: #1f4529;
-  border: 2px solid #1f4529;
+  background-color: var(--dialog-bg);
+  border: 2px solid var(--dialog-border-clr);
   height: 400px;
   width: 300px;
   position: relative;
@@ -247,6 +262,7 @@ dialog {
 }
 
 dialog form {
+  color: var(--form-txt-clr);
   height: 100%;
   display: grid;
   place-content: center;
@@ -259,26 +275,26 @@ form input[type="text"],
 input[type="tel"],
 input[type="number"] {
   appearance: none;
-  border: 2px solid #1f4529;
+  border: 2px solid var(--form-input-clr);
   outline: none;
   border-radius: 5px;
 }
 
 form input:focus,
 input:focus {
-  border: 2px solid green;
+  border: 2px solid var(--btn-form-clr);
 }
 
 form button {
   border-radius: 5px;
   padding: 4px 8px;
   border: none;
-  background-color: green;
-  color: white;
+  background-color: var(--btn-form-clr);
+  color: var(--form-btn-clr);
 }
 
 dialog .close {
-  fill: #1f4529;
+  fill: var(--dialog-close-icon);
   position: absolute;
   top: 5px;
   right: 5px;
