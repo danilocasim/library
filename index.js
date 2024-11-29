@@ -29,28 +29,34 @@ function Book(title, author, pages, isRead) {
     (this.isRead = isRead);
 }
 
-function isBookRead(book, isRead) {
-  if (isRead == true) {
-    book.classList.remove("not-read");
-    book.classList.add("read");
-  } else {
-    book.classList.remove("read");
-    book.classList.add("not-read");
-  }
-}
+function readStatus(element, isRead) {
+  let el = element.tagName.toLowerCase();
+  console.log(element);
 
-function readStatus(readBtn, isRead) {
-  if (isRead == true) {
-    readBtn.classList.remove("unread-btn");
-    readBtn.classList.add("read-btn");
-  } else {
-    readBtn.classList.remove("read-btn");
-    readBtn.classList.add("unread-btn");
+  switch (el) {
+    case "button":
+      if (isRead == true) {
+        element.classList.remove("unread-btn");
+        element.classList.add("read-btn");
+      } else {
+        element.classList.remove("read-btn");
+        element.classList.add("unread-btn");
+      }
+      break;
+    case "div":
+      if (isRead == true) {
+        element.classList.remove("not-read");
+        element.classList.add("read");
+      } else {
+        element.classList.remove("read");
+        element.classList.add("not-read");
+      }
+      break;
   }
 }
 
 const fetchBooks = () => {
-  const books = document.querySelectorAll(".books-container > div");
+  const books = document.querySelectorAll(".books-container > .book");
   books.forEach((book) => {
     book.remove();
   });
@@ -77,10 +83,8 @@ const fetchBooks = () => {
 
     deleteBtn.addEventListener("click", () => {
       let myAttr = newBook.dataset.title;
-      console.log(myAttr);
 
       const books = document.querySelectorAll(".books-container > div");
-
       books.forEach((bookDiv) => {
         if (myAttr == bookDiv.dataset.title) {
           bookDiv.remove();
@@ -100,11 +104,11 @@ const fetchBooks = () => {
         readBtn.textContent = "Unread";
         readBtn.style.background = "green";
       }
-      isBookRead(newBook, book.isRead);
+      readStatus(newBook, book.isRead);
     });
 
     readStatus(readBtn, book.isRead);
-    isBookRead(newBook, book.isRead);
+    readStatus(newBook, book.isRead);
 
     newBook.classList.add("book");
     deleteBtn.classList.add("delete");
