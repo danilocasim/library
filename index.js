@@ -5,6 +5,7 @@ const dialog = document.querySelector("dialog");
 const closeDialog = document.querySelector(".close");
 const booksContainer = document.querySelector(".books-container");
 const addBook = document.querySelector(".add");
+const inputs = document.querySelectorAll("dialog input[required]");
 
 class LibraryStorage {
   static myLibrary = [
@@ -157,7 +158,10 @@ const addBooksToLibrary = () => {
 
   fetchBooks();
 
-  form.reset();
+  const inputs = document.querySelectorAll("form input[required]");
+  inputs.forEach((input) => {
+    input.value = "";
+  });
 };
 
 addBook.addEventListener("click", (e) => {
