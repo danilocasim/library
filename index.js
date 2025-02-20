@@ -164,13 +164,54 @@ const addBooksToLibrary = () => {
   });
 };
 
+function showError() {
+  const title = document.querySelector("#title");
+  const author = document.querySelector("#author");
+  const pages = document.querySelector("#pages");
+
+  if (title.validity.valueMissing) {
+    title.setCustomValidity("Please input the title of the book :<");
+  }
+
+  if (author.validity.valueMissing) {
+    author.setCustomValidity("Please input the name of author :<");
+  }
+
+  if (pages.validity.valueMissing) {
+    pages.setCustomValidity("Please input the number of pages");
+  } else if (pages.validity.rangeUnderflow) {
+    pages.setCustomValidity("Number of pages should be min of 20");
+  } else if (pages.validity.rangeOverflow) {
+    pages.setCustomValidity("Number of pages should be max of 1000");
+  }
+}
+
+inputs.forEach((input) => {
+  input.addEventListener("input", () => {
+    input.setCustomValidity("");
+    if (input.validity.valid) {
+      input.setCustomValidity("");
+    } else {
+      showError();
+    }
+  });
+});
+
+form.addEventListener("submit", (e) => {
+  inputs.forEach((input) => {
+    if (!input.validity.valid) {
+      showError();
+      e.preventDefault();
+    }
+  });
+  addBooksToLibrary();
+  dialog.close();
+  e.preventDefault();
+});
+
 addBook.addEventListener("click", (e) => {
   dialog.showModal();
   document.querySelector(".container").classList.add("blur");
-});
-
-dialog.addEventListener("submit", (e) => {
-  addBooksToLibrary();
 });
 
 dialog.addEventListener("close", () => {

@@ -278,6 +278,7 @@ input[type="number"] {
   border: 2px solid var(--form-input-clr);
   outline: none;
   border-radius: 5px;
+  width: 100%;
 }
 
 form input:focus,
